@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "treasuries",
+  "info": {
+    "singularName": "treasury",
+    "pluralName": "treasuries",
+    "displayName": "Treasury",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Date": {
+      "type": "datetime",
+      "required": true
+    },
+    "Description": {
+      "type": "string",
+      "required": true
+    },
+    "Payee": {
+      "type": "string",
+      "required": true
+    },
+    "Reciever": {
+      "type": "string",
+      "required": true
+    },
+    "Amount": {
+      "type": "decimal",
+      "required": true,
+      "max": 100000000000,
+      "min": 0.1
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Expense",
+        "Income"
+      ],
+      "required": true
+    },
+    "user_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "treasuries_id"
+    }
+  }
+}

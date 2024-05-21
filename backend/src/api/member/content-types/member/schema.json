@@ -1,0 +1,92 @@
+{
+  "kind": "collectionType",
+  "collectionName": "members",
+  "info": {
+    "singularName": "member",
+    "pluralName": "members",
+    "displayName": "Member",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string",
+      "required": true
+    },
+    "Surname": {
+      "type": "string",
+      "required": false
+    },
+    "Address": {
+      "type": "text"
+    },
+    "Birthdate": {
+      "type": "datetime",
+      "required": true
+    },
+    "Email": {
+      "type": "email",
+      "required": true
+    },
+    "PhoneNumber": {
+      "type": "string",
+      "regex": "^(?:(?:(?:\\(?0?[1-9]\\d{1}\\)?[\\s-]?\\d{3}[\\s-]?\\d{3})|(?:\\(?0?[1-9]\\d{2}\\)?[\\s-]?\\d{2}[\\s-]?\\d{2}[\\s-]?\\d{2})|(?:\\(?0?[1-9]\\d{2}\\)?[\\s-]?\\d{3}[\\s-]?\\d{2}[\\s-]?\\d{2}))|(?:(?:(?:\\+|00)34[\\s-]?)?(?:6|7|8|9)[\\s-]?\\d{3}[\\s-]?\\d{3}[\\s-]?\\d{3}))$",
+      "required": true
+    },
+    "ArmsSponsor": {
+      "type": "string"
+    },
+    "JoiningDate": {
+      "type": "datetime",
+      "required": true
+    },
+    "Badges": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "Board": {
+      "type": "enumeration",
+      "enum": [
+        "Club President",
+        "Vice President",
+        "Secretary",
+        "Treasurer",
+        "Vocal",
+        "Basic"
+      ],
+      "default": "Basic",
+      "required": true
+    },
+    "user_id": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "members_id"
+    },
+    "Picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "isActive": {
+      "type": "enumeration",
+      "enum": [
+        "Active",
+        "Left",
+        "Banned"
+      ],
+      "required": true,
+      "default": "Active"
+    },
+    "Notes": {
+      "type": "text"
+    }
+  }
+}
